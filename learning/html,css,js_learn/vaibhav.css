@@ -1,0 +1,658 @@
+/*comments are given like cpp*/
+
+
+.classcolor{
+
+    color:rgb(70, 52, 52);   /*this is class selector*/
+    font-size: xx-large;       /* 1 pixel=1/96 inch*/
+   
+    height: 50px;
+}
+
+
+/*font properties , can use google fonts*/
+#idcolor
+{
+    font-weight: 900;
+    font-size: 100px;
+    color: burlywood;     /*this is id selector*/
+    font-style: oblique;
+   
+    height: 200px;
+    
+}
+
+#main
+{
+    background-color: aqua;
+}
+
+/* to make a word from sentence have different propertie use span */
+.spanprop
+{
+    
+    font-size: xx-large ;
+    font-style : oblique;
+    font-variant: initial;
+    font-stretch: condensed;
+    color: #4E271F;       /*hex colors can also be used instead of rgb*/
+    border-width: 5px;
+    border-color: black;
+    border-radius: 10px;
+    border-style: solid;
+}
+
+/*about borders*/
+/*border style is compulsary */
+#borderprop
+{
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+    border-width: 5px;
+    font-style: italic;
+}  
+
+/*about background*/
+#imagepos
+{
+    height: 300px;
+    width: 600px;
+    background-image: url(logo.png);
+    background-repeat: no-repeat;
+    border-style: solid;
+    background-position-x: center;
+    background-size: 600px;
+
+}
+
+#container
+{
+    width: 400px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: rgb(10 244 30);
+    background-color: aquamarine;
+
+   
+   
+   
+}   
+
+.commprop
+{
+    
+    border-style: solid;
+    border-radius: 5px;
+    border-color: blueviolet;
+    margin: 40px;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 70px;
+    background-color: #e490a0;
+    text-align: center;
+   
+    
+    
+}
+
+#box1
+{
+    text-transform: uppercase;
+    text-align: justify;
+   
+}
+
+/* this can be used to set same properties to all.
+
+*
+{
+
+}
+
+*/
+
+#id1
+{
+    border-style: solid;
+    border-color: blue;    
+    border-width: 4px;
+    border-radius: 30px;
+    padding: 100px;
+    padding-top: 20px;
+    margin: 100px;   
+}
+
+#id4
+{
+    border-style: solid;
+    margin-top: 100px;
+}
+
+#id4:active
+{
+    color: green;
+
+}
+
+#id5
+{
+    
+    border-style: solid;
+}
+
+a
+{
+    text-decoration: none; /* to remove blue line from below of links*/
+}
+
+/* to remove border when we click on search on website */
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+/*for changes in link use 'a:link,a:hover,a:active,a:visited'*/
+
+/* and to make cursor look similar for both tabs use cursor:pointer(etc)*/
+
+
+#id6
+{
+    border-style: solid;
+    border-radius: 30px;
+ 
+}
+
+#id7
+{
+    border-radius: 30px;
+    border-style: solid;
+    padding-left: 50px;
+    background-color: black;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+#id8
+{
+    padding-left: 35px;   
+    color: white;
+   
+}
+
+#id8:hover
+{
+   color: rgb(123, 100, 8);
+
+}
+
+#id9
+{
+  
+    margin-left: 700px;
+    border-radius: 30px;
+    padding: 5px;
+    padding-right: 100px;
+    
+}
+
+/* we can use display:block(occupy space like a paragraph) / inline(occupy space like a span) (etc) */
+
+
+/* to make an element move relative to its original position , but its place does not get occupied (empty space left) , we use position: relative */
+/* to make an element move relative to its original position , but its place get occupied by surrounding element (no empty space left) , we use position: absolute */
+
+.c1
+{
+ 
+    margin-top: 50px;
+    height: 1000px;
+    border-style: solid;
+    padding: 30px;
+   
+}
+
+#id10
+{
+    border-style: solid;
+    padding: 20px;
+    display: inline;    
+   
+}
+
+#id11
+{
+    border-style: solid;
+    padding: 20px;
+    display: inline;
+   
+}
+
+#id12
+{
+    border-style: solid;
+    padding: 20px;
+    display: inline;
+    position: absolute;
+    margin-left: 60px;
+    margin-top: -50px;
+
+}
+
+
+
+/* to make an element stay at a fixed postion position on screen , throughtout the scrolling of our website (chatbot) , we use position: fixed
+ - it is necessary to give position from above and side of screen (like how much pixel from right , top , left and bottom )
+ - position of 'fixed' element is according to the window frame */
+
+#id14
+{
+    border-style: solid;
+    border-radius: 50px;
+   display: inline;
+   position: fixed;
+   right: 30px ;
+   bottom:20px;
+   
+}
+
+/* to make an element stay at a fixed position , only when we are scrolling through its parent position , we use position: sticky
+-  it is necessary to give position from above and side of screen (like how much pixel from  top , bottom )
+- position of 'sticky' is according to parent element */
+
+#id13
+{
+    border-style: solid;
+    padding: 20px;
+    display: inline;
+    position: sticky;
+    top: 100px;
+  
+}
+
+/* if we want to hide an element , we can use:
+- visibility: hidden => if we want to hide the element and let its place remain empty
+- display: none => if we want to hide the element and also occupy its place */
+
+
+/* we can use flex properties by first declaring it as display:flex
+- by using flex properties , we can make boxes come in row or column easily by using flex-direction:
+- by using flex-wrap: wrap , we can make our website responsive for different devices */
+#id15
+{
+    border-style: solid;
+    margin-top: 100px;
+    padding: 70px;
+}
+#id16
+{
+    border-style: solid;
+    padding: 50px;
+   margin-top: 20px;
+  
+   display: inline-flex;
+  
+ justify-content: right;
+   
+}
+
+
+/*
+- we can give dimensions to an element , which will adjust itself according to parent element , by using "em" as unit , insted of 'px' 
+- we can give dimensions to an element , which will adjust itself according to the html page dimensions , by using "rem" , instead of 'px 
+*/
+
+
+/*
+- we can use media queries to make our website responsive for different devices 
+- using media queries , we can change css according to different screen sizes 
+*/
+
+@media (max-width:1400px) and (min-width:1262px)
+{
+    #id9
+    {
+        margin-left: 35rem;
+
+    }
+
+}
+
+@media (max-width:1260px) and (min-width:1050px)
+{
+    #id9
+    {
+        margin-left: 20rem;
+
+    }
+
+}
+
+@media (max-width:1049px) and (min-width:905px)
+{
+    #id9
+    {
+        margin-left: 15em;
+
+    }
+
+}
+
+@media (max-width:904px) and (min-width:780px)
+{
+    #id9
+    {
+        margin-left: 5em;
+
+    }
+
+}
+
+@media (max-width:779px) and (min-width:740px)
+{
+    #id9
+    {
+        margin-left: 2em;
+
+    }
+
+}
+
+
+
+/* 
+1.  we can write as :
+        div li p
+        {
+            some css
+        }
+    to give css to paragraph which is inside a list , inside a div 
+    
+2.  we can write as :
+        div > p
+        {
+            some css
+        }
+    to give css to a paragraph which is first , inside a div
+
+3.  we can write as :
+        div + p
+        {
+            some css
+        }
+    to give css to a paragraph which is just next to div , but outside
+
+*/
+
+/* we can give css to a particular element , (which will be given to all element of that type , the whole page) by using this :- */
+input[type=tel]
+{
+    font-size: xx-large;
+}
+
+/* we can give css to element according to mathematical pattern , by using nth-child selector */
+li:nth-child(2n+1)
+{
+    color: red;
+
+}
+
+li:nth-child(2n)
+{
+    color: blue;
+}
+
+/* we can make a backgournd image opaque or transparent using opacity , whose value varies from 0(transparent) to 1(opaque) */
+#id17
+{
+    background-image: url(logo.png);
+    height: 500px;
+    width: 1000px;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+}
+
+/* - we can shadow to a box(outside) by using box-shadow property , 
+     syntax:-
+        box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];
+
+   - we can give shadow to a box at upper side by giving -ve values to horizontal and vertical offest.
+*/
+
+/* - we can aslo add shadow to text , by using text-shadow , just like box-shadow.*/
+.c2
+{
+    margin-left: 80px;
+    border-style: solid;
+    padding: 100px;
+    box-shadow: 7px 10px 2px 2px red;
+    border-radius: 15px; 
+    text-align: center; 
+    text-shadow: 3px 1px rgb(244, 167, 167);  
+    background-color: rgb(225, 248, 137);
+    font-weight: 900;
+}
+
+/* - we can create a variable conating a property by using syntax:-
+    Syntax:-
+        --box-color:black;
+    
+   - And we can include it in css by:-
+         box-color:var(box-color);
+
+   - But we can use this in the same id or class (like a local variable).
+*/ 
+
+/* we can shadow to a box(inside) by using box-shadow property , 
+   syntax:-
+    box-shadow: inset [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];
+*/
+#id19
+{
+    margin-left: 120px; 
+    box-shadow: inset 7px 10px 2px 2px green ;
+    
+}
+
+/* we can give multiple shadow to a box by:-
+   syantax:- 
+    box-shadow: 7px 10px 2px 2px red , 7px 10px 2px 2px green;
+*/
+#id20
+{
+    margin-left: 120px;  
+    box-shadow: -2px -3px 2px 2px red , -7px -7px 2px 2px white , -13px -13px 2px 2px green;
+   
+}
+
+#id21
+{
+    margin-top: 150px;
+   
+}
+
+#id22
+{
+    display: flex;
+}
+
+#id23
+{
+
+    border-style: solid;
+    padding-left: 10px;
+    background-color: darkgreen;
+}
+
+#id24
+{
+   
+    padding-bottom: 200px;
+    margin-right: 1250px;
+    background-color: rgb(132, 255, 9);
+ /* animation name is declared where the amination is to be performed */
+    animation-name: anim1;
+
+ /* duration of animation is declared like this */
+    animation-duration: 2s;
+
+ /* number of times the animation is to be performed is declared like this */
+    animation-iteration-count:2;   /* can be set to infinte */
+
+ /* animation-fill-mode tells the end part of the animation */
+    animation-fill-mode:none;  /* forward stops the animation at the properties present in 'to' */
+                                    /* backwards stops the animation at the properties present in 'from' */
+
+ /* animation-timing-function tells about starting and edning speed of animation */
+    animation-timing-function: ease-in;  /* using ease-in , animation is started slowly , ended fastly */ 
+                                         /* using ease-out , animation is started fastly , ended slowly */
+                                         /* using ease-in-out , animation is started slow;y , then become fast , then become slow at the end */
+
+ /* animation-delay tells the duration of time before the animation starts */
+    animation-delay: 1s;
+
+ /* animation-direction tells the flow direction of animation */
+    animation-direction: normal;
+
+ /* animation short-hand can be created by :- 
+    animation: animation-name animation-duration animation-iteration-count;
+ */
+    
+}
+
+
+/* animation is defined under the keyframes */
+@keyframes anim1
+{
+    from{
+        width:200px;
+        background-color: rgb(132, 255, 9);
+        border-radius: 1px;
+
+    }
+
+    to{
+        width:600px;
+        background-color: rgb(237, 237, 13);
+        border-radius: 50px;
+        transform: rotate(360deg);
+    }   
+}
+
+/* another format of defining animation is */
+@keyframes anim2
+{
+    0%
+    {
+        width:200px;
+        background-color: rgb(132, 255, 9);
+        border-radius: 1px;
+
+    }
+    
+    25%
+    {
+        background-color: pink;
+    }
+
+    50%
+    {
+        border-style: solid;
+        border-width: 10px;
+    }
+
+    75%
+    {}
+
+    100%
+    {
+        width:600px;
+        background-color: rgb(237, 237, 13);
+        border-radius: 50px;
+    }
+}
+
+#id25
+{
+    border-style: solid;
+    border-radius: 1px;
+    padding: 70px;
+    margin-right: 1270px;
+    /* using transition , we can see the change of property form one to another while hover */
+    transition-property: all;       /* tell that the transition effect should be shown of which properties */
+    transition-duration: 2s;        /* tells that for how much time should be taken to complete the transition */
+    transition-delay: 1s;           /* tells that after how much time the trasnition should be started */
+    transition-timing-function: ease-in;  /* tells the speed of tranisition while starting and end of transition */
+
+    /* shorthand for transition can be created by :- 
+    transition: transition-property transition-duration transition-delay transition-timing-function;
+    */
+}
+
+#id25:hover
+{
+    border-radius: 50px;
+    background-color: red;
+    padding: 100px;
+    margin-right: 1190px;
+    transform: rotate(360deg);
+}
+
+#id26
+{
+    display: grid;
+
+    /* - grid-template-column , is used to make number of columns , in which each has a particular width 
+            grid-template-columns: 100px 300px auto 500px;
+       - here 100px, 300px, 100px, 100px are width and their are 4 widths , so 4 columns will be made
+       - we can also give it as auto , so to fill the whole screen ( can be used to make website suitable for all device screens )
+    */
+
+    /* - we can also define grid-template-column like this , in which '4' is number of column and auto is the width
+            grid-template-columns: repeat(4,auto);
+    */  
+
+    /* we can also use "fr" units instead of 'px'
+            grid-template-columns: 1fr 3fr 2fr 1fr 4fr;
+    */
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 3fr 2fr;
+    grid-auto-rows: 1.5fr;  /* this can be used to give a particular 'fr' to remaining all elements */
+    grid-gap: 2rem;
+
+}
+
+.c3:first-child /* we can also use nth-child */
+{
+    grid-column-start: 1;     
+    grid-column-end: 3;      /* we can write these 2 lines in a single line by :- grid-column:1(start) / span 3 (span till 3rd column)*/
+    grid-row: 2/span 3;   
+   
+}
+
+
+.c3
+{
+    border-style: solid;
+    background-color: yellow;
+    padding: 4px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
