@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 #id1
 {
@@ -32,3 +33,39 @@
 
 
 
+=======
+
+#id1
+{
+    border-radius: 50px;
+    background-color: rgb(66, 209, 66);
+    color: black;
+}
+
+#id1:hover
+{
+    border-color: black;
+    border-width:2px;
+}
+
+#id2
+{
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 1285c54 (1st commit)

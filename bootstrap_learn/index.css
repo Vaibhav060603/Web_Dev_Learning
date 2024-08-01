@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #id1 {
     border-radius: 20px;
 
@@ -15,4 +16,23 @@
     transform: scale(1.05);
 
     
+=======
+#id1 {
+    border-radius: 20px;
+
+}
+
+#id2 {
+    margin-left: 5px;
+}
+
+#id3 {
+    margin-top: 10px;
+}
+
+#id5:hover {
+    transform: scale(1.05);
+
+    
+>>>>>>> 1285c54 (1st commit)
 }

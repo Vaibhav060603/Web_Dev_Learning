@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--NOTE-> use alt + UP/DOWN to move set of lines up or down-->
 <!---NOTE-> use alt + (click on the multiple positions where you want to have same editing)-->
 
@@ -524,4 +525,532 @@
 
 </script>
 
+=======
+<!--NOTE-> use alt + UP/DOWN to move set of lines up or down-->
+<!---NOTE-> use alt + (click on the multiple positions where you want to have same editing)-->
+
+
+<!DOCTYPE html>
+<!--comment-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--for description and its content -->
+    <meta name="Description" content="this the the discription">
+    <!---->
+    <meta name="keyword" content="its contents">
+    <!---->
+    <meta name="robots" content="INDEX,FOLLOW">
+
+    <!-- to include css file , type link and select link css , type file_name -->
+    <link rel="stylesheet" href="vaibhav.css"> <!--external css-->
+
+    <!-- to put an image of fav icon (title) -->
+    <link rel="icon" type="image/x-icon" href="groww.png">
+
+    <!-- to include javascript file , type script and select script:src , type file_name -->>
+    <script src="vaibhav.js"></script>
+    <script src="vaibhav_node.js"></script>
+
+    <style>
+        #para {
+            color: green;
+        }
+    </style>
+    <title>Learning</title>
+</head>
+
+<body>
+    hello vaibhav how are you
+    <!--link open in same tab-->
+    <a href="http://google.com">go to google<br></a>
+    <!--link open in new tab -->
+    <a href="http://google.com" target="_blank"> google<br></a>
+    <!--to link with another web page-->
+    <a href="Delhi.html" target="__blank">next page</a>
+
+    <a style="color:red" href="tel:+91 7568802454">mobile</a> <!--inline css-->
+    <!--heading , h1 to h6-->
+    <h1>top heading </h1>
+
+    <!--paragraph-->
+    <p id="para">
+        paragraph Lorem ipsum, dolor sit amet consectetur adipisicing elit. <strong>this is strong</strong> laudantium
+        <em>this is emphasized </em>veniam, eligendi <br> similique voluptate ea quos perspiciatis inventore aliquam nam
+        facere quidem labore nisi quibusdam molestias velit deserunt deleniti! Lorem ipsum dolor sit, amet consectetur
+        adipisicing elit. Aut, eligendi. Esse, aperiam? Optio vitae deserunt delectus expedita deleniti, nobis dolores!
+        Nam nulla molestiae quisquam eum earum quo neque, voluptatum Lorem, ipsum dolor sit amet consectetur adipisicing
+        elit. Vitae doloremque repellendus molestias! Quo, eius. Deleniti voluptatem voluptatum rem sapiente
+        consequuntur minus unde tempora. Sequi vitae numquam deserunt quas fugiat quae nemo molestiae autem dolore ut,
+        impedit placeat nesciunt, incidunt commodi?
+    </p>
+
+    <!--break the line and go on new line-->
+    a<br>
+
+    <!--image adding ,add image to same folder,src contain name of image,alt contains message to be displayed when an image is not loading -->
+    <img src="logo.png" alt="loading">
+
+    <!-- horizontal line -->
+    <hr>
+
+    absj
+
+    <!--ordered list,type=1,i,I,A,a-->
+    <ol type="a">
+        <li>this is order list one.</li>
+        <li>this is order list two.</li>
+        <li> this is order list three.</li>
+    </ol>
+
+    <!--unordered list,type=circle,disk,square,none-->
+    <ul type="none">
+        <li>this is un-ordered list one.</li>
+        <li>this is un-ordered list two.</li>
+        <li>this is un-ordered list three.</li>
+    </ul>
+
+    <!--table formation,table{tr[th],tr[td],tr[td],tr[td]}-->
+    <table>
+        <tr>
+            <th>column 1</th>
+            <th>column 2</th>
+            <th>column 3</th>
+            <th>column 4</th>
+        </tr>
+
+        <tr>
+            <td>r1,c1</td>
+            <td>r1,c2</td>
+            <td>r1,c3</td>
+            <td>r1,c4</td>
+        </tr>
+
+        <tr>
+            <td>r2,c1</td>
+            <td>r2,c2</td>
+            <td>r2,c3</td>
+            <td>r2,c4</td>
+        </tr>
+
+        <tr>
+            <td>r3,c1</td>
+            <td>r3,c2</td>
+            <td>r3,c3</td>
+            <td>r3,c4</td>
+        </tr>
+
+    </table>
+
+    <!--to create a form , type input , action=location where data is to be saved , like a variable in which is to be stored , to get everything in new line div is used ,-->
+    <form action="backend.php">
+        <div>
+            Name : <input type="text" , name="my_name">
+        </div>
+
+        <div>
+            <label for="name">name</label>
+            <select name="nyname" id="name">
+                <option value="vaibhav">vaibhav</option>
+                <option value="vaib">vaib</option>
+            </select>
+
+        </div>
+
+        <br> <!--not recommended to use br much , rather use css-->
+        <div>
+            roll No. : <input type="text" , name="my_roll">
+        </div>
+        <br>
+
+        <div>
+            subject : <input type="text" name="my_subject">
+        </div>
+
+        <br>
+
+        <!-- input type can be text , button , checkbox , etc based on requirement -->
+
+        <!--in radio only one can be selected-->
+        <div>
+            male :<input type="radio" name="my gender">
+            female : <input type="radio" name="my gender">
+            other : <input type="radio" name="my gender">
+        </div>
+        <br>
+
+        <!--in checkbox multiple can be selected , to get an option by default checked , write checked after it -->
+        <div>
+            c1 :<input type="checkbox" name="my name">
+            c2 : <input type="checkbox" name="my name">
+            c3 : <input type="checkbox" name="my name" checked>
+        </div>
+        input
+        <br>
+        <div>
+            <!--for submit button-->
+            <input type="submit" value="submit that only">
+            <!--for reset button-->
+            <input type="reset" value="reset all inputs">
+        </div>
+
+        <br>
+
+        <div>
+            number :<input type="number" name="number" placeholder="enter the number">
+        </div>
+
+        <br>
+
+        <div>
+            <input type="range" name="my range" placeholder="search"> <!-- placeholder comes inside the search box -->
+        </div>
+
+        <br>
+
+        <!--to input a written message(paragraph) from user , use text area , type textarea in vs cs code-->
+        <div>
+            type about yorself :
+            <br>
+
+            <br>
+
+            <textarea name="crec" id="" cols="50" rows="10">
+         type about your self :
+        </textarea>
+        </div>
+
+        <br>
+
+        <!--to add choice based input , for label tag type label , for option tag type option -->
+        <div>
+            <label for="age">Age :</label>
+            <select name="my age" id="age">
+                <option value="below 18">Below 18 select</option>
+                <option value="18+">18+</option>
+            </select>
+        </div>
+    </form>
+
+    <br>
+
+    <!--paragraph is an block element and span is an inline element -->
+
+    <div>
+        <p>
+            this is a paragraph.
+        </p>
+
+        <p>
+            this is also an paragrph.
+        </p>
+
+        <span>
+            but this is a span.
+        </span>
+
+        <span>
+            this is also a span.
+        </span>
+    </div>
+
+    <br>
+
+    <!-- id are name/identity of div , each div has a unique identity -->
+    <!-- class are the predefined property which we want to get implemented on a div , each div can have multiple class -->
+    <!-- to add mulltiple classes : class= "c1 c2 c3 ..."-->
+
+    <!-- for class use '.' (span.class_name) and for id use '#' (span#id_name) -->
+    <div id="unique" class="property,look">
+        <span class="property"></span>
+        <span id="unique"></span>
+        <span class="property" id="unique"></span>
+
+    </div>
+
+    <!-- html entity are used to print html reserved symbols -->
+    <div>&lt;p&gt;&nbsp; &nbsp; &nbsp; &#x20B9; &#8203;</div>
+
+    <div id="main">
+
+        <p id="idcolor">
+            This is colored using id selector
+        </p>
+
+        <p class="classcolor">
+            this is colored using class selector
+        </p>
+
+        <p class="classcolor">
+            this is colored <span class="spanprop">using</span> class selector
+            <!-- to make a word from sentence have different propertie use span -->
+        </p>
+
+    </div>
+
+    <div>
+        <p id="borderprop">
+            this para is used to demonstrate border and its properties
+        </p>
+    </div>
+    <div>
+        <p id="imagepos">
+            this is for background image Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea ex ipsam facere
+            mollitia quos! Quasi accusantium veritatis magnam, sapiente excepturi corrupti nulla velit? Voluptas,
+            nesciunt ratione ut ad molestiae nulla.lorem Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe
+            quo asperiores id aut voluptatibus, adipisci inventore obcaecati aliquid hic animi cumque similique harum
+            expedita ad. Itaque suscipit est aspernatur repellat. lorem lorem
+        </p>
+    </div>
+
+    <!-- element , padding , border , margin -->
+    <!-- we can use "box-sizing=border box" to fix the border sieze in width or height -->
+
+    <div id="container">
+        <div id="box1" class="commprop">
+            <h3>
+                this is box 1.
+            </h3>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, nam minima repudiandae porro
+                possimus ex consequatur nihil adipisci modi, dolore officia, voluptas ratione distinctio necessitatibus
+                omnis odio aliquid. Nulla, harum!
+            </p>
+        </div>
+
+        <div id="box2" class="commprop">
+            <h3>
+                this is box 2.
+            </h3>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, nam minima repudiandae porro
+                possimus ex consequatur nihil adipisci modi, dolore officia, voluptas ratione distinctio necessitatibus
+                omnis odio aliquid. Nulla, harum!
+            </p>
+        </div>
+
+        <div id="box3" class="commprop">
+            <h3>
+                this is box 3.
+            </h3>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti, nam minima repudiandae porro
+                possimus ex consequatur nihil adipisci modi, dolore officia, voluptas ratione distinctio necessitatibus
+                omnis odio aliquid. Nulla, harum!
+            </p>
+        </div>
+
+    </div>
+
+    <div id="id1">
+        <h1 id="id2">
+            login page
+        </h1>
+        <p id="id3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero vitae earum repellendus iusto ab. Impedit rem
+            qui minus quis? A facere dicta mollitia? Odio distinctio aspernatur labore dolor cum nobis. Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Ex perferendis ratione quis quibusdam, vero veritatis quisquam
+            qui beatae obcaecati eligendi voluptate porro dolor sequi distinctio, velit accusamus voluptatibus?
+            Possimus, voluptatibus.
+        </p>
+
+        <a href="http://google.com" id="id4">login</a>
+        <a href="http://facebook.com" id="id5">sign-up</a>
+        <a href="http://youtube.com" id="id6">another</a>
+
+    </div>
+
+
+    <!-- navigation menu-->
+    <div id="id7">
+        <span>
+            <a href="/" id="id8">Home</a>
+            <a href="/bootstrap" id="id8">About</a>
+            <a href="/index" id="id8">Services</a>
+            <a href="http://" id="id8">Contact Us</a>
+            <span><input type="text" placeholder="Search this website" id="id9"></span>
+        </span>
+
+
+    </div>
+
+
+    <div class="c1">
+        <div id="id10">1</div>
+        <div id="id11">2</div>
+        <div id="id12">3</div>
+        <div id="id13">4</div>
+    </div>
+
+    <div id="id14">
+        do you want to chat with our chatbot
+    </div>
+
+    <div id="id15">
+        <div id="id16">box 1</div>
+        <div id="id16">box 2</div>
+        <div id="id16">box 3</div>
+        <div id="id16">box 4</div>
+    </div>
+
+
+    <div>
+        <a href="http://google.com">go to google</a><br>
+        <a href="http://facebook.com">go to facebook</a><br>
+        <input type="text" name="" id="" placeholder="Enter your name"><br>
+    </div>
+
+    <div>
+        <input type="text" placeholder="enter your adress"><br>
+        enter you mobile number: <br><input type="tel" name="" id="" placeholder="enter your mobile number">
+    </div>
+
+    <div>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+        <li>
+            <link rel="stylesheet" href="google.com">go to google
+        </li>
+    </div>
+
+
+    <div id="id17">
+
+    </div>
+
+    <div id="id22">
+        <span id="id18" class="c2">
+            <h2>This is box 1</h2>box1
+        </span>
+        <span id="id19" class="c2">
+            <h2>This is box 2</h2>box2
+        </span>
+        <span id="id20" class="c2">
+            <h2>This is box 3</h2>box3
+        </span>
+    </div>
+
+    <p id="id21">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat ex omnis, explicabo, libero, quisquam
+        dolor doloremque tempore illum laboriosam neque ut inventore odit nemo accusamus illo quo praesentium rerum est
+        esse repudiandae dolorem placeat nulla! Qui inventore laboriosam obcaecati ad at, rem asperiores odio tempora
+        fuga sit quae doloribus delectus?</p>
+
+    <div id="id23">
+
+        <p id="id24">
+
+        </p>
+    </div>
+
+    <div> 
+        <p id="id25">
+            this is to understand transition.
+        </p>
+    </div>
+
+
+    <div id="id26">
+        <p class="c3">this is item-1 </p>
+        <p class="c3">this is item-2 </p>
+        <p class="c3">this is item-3 </p>
+        <p class="c3">this is item-4 </p>
+        <p class="c3">this is item-5 </p>
+        <p class="c3">this is item-6 </p>
+        <p class="c3">this is item-7 </p>
+        <p class="c3">this is item-8 </p>
+        <p class="c3">this is item-9 </p>
+        <p class="c3">this is item-10 </p>
+    </div>
+
+
+    <div id="id27">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam perferendis voluptatem soluta harum amet
+        similique nam! Explicabo, laboriosam sint eius quas alias blanditiis ex voluptates? Saepe, beatae similique in
+        debitis illum quia expedita eius, nemo tempora blanditiis, aperiam eos inventore culpa dolorem. Ullam a
+        similique quasi delectus consequuntur animi reprehenderit dolorem et id accusamus omnis, quaerat, eum harum
+        soluta sint ipsam distinctio. Id, ducimus! Dolorem eius dolore necessitatibus aperiam temporibus placeat ratione
+        sed repellat laboriosam exercitationem porro optio ullam explicabo mollitia nemo, molestiae consequatur possimus
+        blanditiis neque! Expedita, omnis? Sed dolore unde, at vero natus possimus. Nobis accusantium sapiente iusto!
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam esse provident modi cum numquam officiis quaerat
+        similique doloremque, nobis enim, cupiditate sunt, suscipit aperiam repudiandae cumque accusamus earum iure
+        blanditiis exercitationem rem magnam! Officiis error cupiditate perferendis quos adipisci tempora provident
+        nesciunt ea, corporis, libero aspernatur, odio nemo iste delectus expedita repellat voluptas consequatur.
+        Voluptates cumque possimus iste, quae modi est velit dicta? Labore numquam tempora ea quo aliquam, atque
+        architecto officiis necessitatibus ab assumenda itaque deleniti eum quia, voluptatibus rem alias blanditiis
+        autem qui dicta omnis officia perferendis animi. Culpa sint itaque cum iusto iure asperiores dolorem impedit
+        fugiat.
+    </div>
+
+
+    <button id="id28">show/hide</button>
+
+
+
+<div id="time">Time is :</div>
+
+
+<div id="dat">date :</div>
+<div id="tim"></div>
+
+
+
+
+    
+
+</body>
+
+<script>
+    let ele = document.getElementById('id27');
+    let hd = document.getElementById('id28');
+    hd.addEventListener('click', function () {
+        if (ele.style.display != 'none') {
+            ele.style.display = 'none';
+        }
+
+        else {
+            ele.style.display = 'block';
+        }
+    });
+
+</script>
+
+>>>>>>> 1285c54 (1st commit)
 </html>
