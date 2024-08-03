@@ -1,0 +1,1164 @@
+- npm is used to install and use packages while npx is used to just use the package foine time(without downloading it).
+
+
+React:
+
+1.  -to create file structure:
+      $~ npx create-react-app [app-name] 
+      $~ cd [app-name]
+      $~ npm install react-router-dom
+      $~ npm start
+
+
+    -To create react app using vite (recommended):
+      $~ npm create vite@latest 
+        (give the required info)
+      $~ cd project-name
+      $~ npm i
+      $~ npm run dev
+
+
+
+
+- components, states, props:
+for example you have a form and you have to fill it :
+in an example of a form, the fields(name, age) are states, the data filled by a user is props, the empty form is components
+
+
+
+2. In react, class => className, for => htmlFor, href="#" => href="/"
+
+
+
+3. To substitute a variable in jsx(html content present inside return):
+
+let name = "Vaibhav";
+function App() {
+  return (
+    <>
+      <navbar>
+        <li><a href="">home</a></li>
+        <li><a href="">about</a></li>
+        <li><a href="">contact</a></li>
+      </navbar>
+
+      <h1>Hello {name}!!</h1>
+    </>
+  );
+}
+
+
+
+4. To add comment in jsx:
+{/* */} 
+
+
+
+5.  modules: (to share data between js(mjs) files)
+        - Suppose I have some data in my module1.mjs (use mjs not js) and I want to use it in module2.mjs, it can be done by "export" keyword.
+        eg:-
+            module1.mjs:
+                 let a = "vaibhav";
+                 let b = "mayur";
+                 let c = "akshay";
+                 let d = "krushna";
+                
+                 export default a;   (to pass a data as default data)
+                 export { b, c, d };  (to pass specific data)
+
+
+            module2.mjs:
+                 import xyc from "./module1.mjs"; 
+                 import {b,c,d} from "./module1.mjs";
+                 
+                 console.log(xyz);
+                 console.log(b);
+                 console.log(c);
+                 console.log(d);
+
+
+
+6. always use capitalized word (1st letter capital) for naming a component.
+  eg:- Navbar.js
+
+
+
+7. Components can be written in "src" folder but try to put them in a folder so to avoid mixing.
+
+
+
+8. We can directly bring reacts function based coding by just typing "rfc": (react es7 package)
+  eg:- Navbar.js:
+          rfc ==> import React from 'react'
+
+                  export default function Navbar() {
+                  return (
+                  <div>
+      
+                  </div>
+                  )
+                  }
+
+
+
+9. To create custom components:
+  - If we want to create a react component and use it many times, we can do it by react components.
+    eg:- 
+      Navbar.js:  (custom component)
+            import React from 'react'
+
+            export default function Navbar() {
+              return (
+                <>
+                    {/* Including Bootstrap in JSX: */} 
+
+                  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+                  </link>
+
+                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"            crossorigin="anonymous">
+                  </script>
+
+                  <br/><br/>
+     
+                  <nav className="navbar navbar-expand-lg bg-body-tertiary">
+                    <div className="container-fluid">
+                      <a className="navbar-brand" href="/">textutils</a>
+                      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                      </button>
+                      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" href="/">Home</a>
+                          </li>
+                          <li className="nav-item">
+                            <a className="nav-link" href="/">About</a>
+                          </li>
+                        </ul>
+                        <form className="d-flex" role="search">
+                          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                            <button className="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                      </div>
+                    </div>
+                  </nav>
+                </>
+              )
+            }
+
+
+      App.js: (importing Navbar component)
+            <Navbar/>
+
+
+
+10. If we want to pass a custom name to Navbar component, we can use props(properties).
+    eg:-
+    // Method-1:(passing all properties in "props" variable)
+
+        Navbar.js:  (custom component)
+            import React from 'react'
+
+                                        ------> (we can also directly pass the required props only as: "export default function Navbar({name, about})" )
+                                        |
+            export default function Navbar(props) {                                                      //1. passing props as parameter to react function component
+              return (
+                <>
+                  <nav className="navbar navbar-expand-lg bg-body-tertiary">
+                    <div className="container-fluid">
+                      <a className="navbar-brand" href="/">{props.name}</a>                              //2. Substituting custom data/value in component
+                      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                      </button>
+                      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li className="nav-item">
+                            <a className="nav-link" href="/">{props.about}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </nav>
+                </>
+              )
+            }
+
+
+        App.js: (importing Navbar component)
+            <Navbar name="vaibhav" about="About Us"/>                                                    //3. passing custom data/value in app.js to Navbar component
+
+
+
+    //Method-2: (passing specific prop variable name)
+    -We can pass a default value in a prop(dafault props).
+
+        Navbar.js:  (custom component)
+            export default function Navbar({name ="vaibhav", about})                                     //1. passing props as parameter to react function component
+                                                  |
+                                                  ---------> ( "vaibhav" will be passed as default prop if no value is passed ) 
+
+
+            <a className="navbar-brand" href="/">{name}</a>                                              //2. Substituting custom data/value in component
+
+
+        App.js: (importing Navbar component)
+            <Navbar about="About Us"/>                                                                   //3. passing custom data/value in app.js to Navbar component
+                   |
+                    --------> (name not passed, so it will take default value as name="vaibhav")
+
+
+
+
+
+
+11. - If we want to specify the datatype of each variable (passed as props), we can use ".propTypes".
+    - If we want to specify that a variable is necessarily required, then we can use ".isRequired".
+    eg:- (write at last of the custom component(Navbar.js)) 
+      
+        Navbar.propTypes = {                 
+        name: PropTypes.string,
+        about: PropTypes.string.isRequired
+        }
+
+  
+Note: To import proptypes, we can just type "impt";
+      eg:- 
+          impt ==> import PropTypes from 'prop-types'
+
+
+
+12. We can add a component in component.
+    eg:-
+        import React from "react";
+
+        function Button(props){                                                        // Component-1
+            return (
+                <button>{props.text}</button>
+            );
+        }
+
+        export default function TextForm(props) {                                      // Component-2
+          return (
+            <>
+                <Button text="Convert To Upper-Case."></Button>                        // Component-1 in Component-2
+                <Button text="Convert To Lower-Case."></Button>
+            </>
+          );
+        }
+
+
+
+13. Event handling in React:
+
+   
+    Note: Points to remember:
+          - try to use functions name as:
+              event => onChange
+              function => handleOnChange
+
+
+          - Pass the function to event handler as parameter, not function call.
+
+
+          - We can also pass event handling functions as props. 
+
+    eg:- 
+    
+          import React,{useState} from "react";                                            
+
+          function Button(props){                                                         
+              return (
+                  <button onChange={props.onChange}>{props.text}</button>
+              );
+          }
+
+
+          export default function TextForm(props) {
+
+              const handleOnChange = ()=>{                                                    //1. Define functions to handle the events
+                  
+              }
+    
+    
+              const handleOnClickUp = ()=>{                                                   //1. 
+                  
+              }
+
+
+            return (
+              <>
+                <div className="container">
+                  <div className="mb-3">
+                    <label for="exampleFormControlTextarea1" className="form-label">
+                      {props.title}
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="10"
+                      onChange={handleOnChange}                                               //2. Pass the function as parameter to the event handler (not as function call)
+                      value={text}
+                    ></textarea>
+                  </div>
+        
+
+                  <button onClick={handleOnClickUp}>Convert To Upper-Case</button>            //2.
+                  <Button text="Convert To Lower-Case." onChange={handleOnClickLow}></Button>  //2.
+                                                                      |
+                                                                      `-------> (passing function as a props)
+ 
+                </div>
+              </>
+            );
+          }
+
+
+
+*****
+14. (i). We can use "useState" hook, to dynamically always update the value inside the variable, wherever it is used
+    (ii). But if do not want to always change the value inside the variable and just change the value inside the varible when we tell it do so, we can use "useRef" hook.
+
+
+    Use-Cases:
+    (i). We can use "useState" hook, to dynamically always update the value on screen, everywhere it is used.  
+          eg:- If a user is typing his/her name, then we can use "useState" to regularly update and also "display" the continuously changing value in input field.
+
+    (ii). We can use "useRef", whenever we do not want to display the changes but just want the final value in the input field.
+          eg:- If a user is typing his/her name, then we can use "useRef" to just take the final value from input field and then just just the final value.
+
+
+    How to Use:
+    (i). useState: 
+    
+      - Reading data and updating it on screen, using useState() hook: (without reloading the page)
+      - The only argument to useState is the initial value of your state variable. In this example, the index’s initial value is set to 0 with useState(0).
+
+      - Every time your component renders, useState gives you an array containing two values:
+          :The state variable (index) with the value you stored.
+          :The state setter function (setIndex) which can update the state variable and trigger React to render the component again.
+
+
+      eg:- 
+
+          import React,{useState} from "react";                                             //1. Import useState from React
+
+          export default function TextForm(props) {
+
+              const handleOnChange = (e)=>{                                                 
+                  setText(e.target.value);                                                  //5. Then reading the changed data from e(event) and constantly updating it in text variable using "e.target.value".
+              }
+    
+    
+              const handleOnClickUp = ()=>{                                                
+                  setText(text.toUpperCase());
+              }
+
+
+          const [text,setText] = useState('');                                              //2. use this syntax to initially set the text variable to the data inside useState(''), and if we want to make some changes, then we can use setText() function (we can give any name instead of text and setText())
+
+
+            return (
+              <>
+                <div className="container">
+                  <div className="mb-3">
+                    <label for="exampleFormControlTextarea1" className="form-label">
+                      {props.title}
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="10"
+                      onChange={handleOnChange}                                             //4. define an handleOnChange() function to handle change and pass it as parameter
+                      value={text}                                                          //3. Then passing the text variable to suitable tags as initial string
+                    ></textarea>
+                  </div>
+        
+
+                  <button onClick={handleOnClickUp}>Convert To Upper-Case</button>          //4. define an handleOnClick() function to handle clicks and pass it as parameter
+
+                </div>
+              </>
+            );
+          }
+
+
+
+          
+    (ii). useRef:
+          eg:-
+            import React,{useRef} from "react";                                                       //1. import useRef 
+
+
+            export default function Todo() {
+
+              const [taskArr, setTaskArr] = useState( [] );
+
+
+              const handleClickDelete = (item) => {
+                  setTaskArr(taskArr.filter(element => element !== item));
+              }
+
+              const task = useRef();                                                                    //2. create variable using useRef
+              const date = useRef();
+
+              const handleClickAdd = ()=>{
+                    const ctask = task.current.value;                                                   //3. To access the current value the variable                    
+                    const cdate = date.current.value.split("-").reverse().join("-"); 
+                    console.log(task.current.value)
+                    console.log(date.current.value)
+                    setTaskArr([...taskArr, {ctask , cdate}]);
+                    task.current.value = "";
+                    date.current.value = "";
+              }
+
+
+              return (
+                <>
+                  <div className='c1'>
+                    <h1>To-Do App</h1>
+                    <div>
+                        <input type="text" name="" id="id1"  className="c2" ref={task} placeholder="Enter the todo here"/>     //4. add "ref={variable-name}" to it on screen
+                        <input type="date" name="" id="id2"  className="c2" ref={date}/>  
+                        <button type="submit" id='id3' className="c2" onClick={handleClickAdd}>Add</button> 
+                    </div>
+            
+                    {taskArr.length ===0 ? <h2>No items added</h2> : null }
+
+                    {taskArr.map((item) => (
+                        <div key={`${item.ctask}-${item.cdate}`}>
+                          <span className='c3' id='id1'>{item.ctask}</span>
+                          <span className='c3' id='id2'>{item.cdate}</span>
+                          <span className='c3' id='id4' onClick={(event) => handleClickDelete(item,event)}>Delete</span>       
+                        </div>        
+                        ))}
+                    </div>   
+                </>
+              )
+            }
+
+
+
+
+15. We can give style in 2 ways(in .js file):
+
+    //Method-1:
+        eg:- (i). <p style={{textAlign : 'justify'}}></p>
+             (ii). <p style={{textAlign : 10 + 'rem'}}></p>
+
+
+    //Method-2:
+        eg:- 
+              const [style1, setStyle] = useState({
+                textAlign : "centre",
+                paddingLeft: "9rem",
+                paddingRight: "9rem",
+                marginTop: "50px",
+                backgroundColor: "white",
+                border: "solid black"
+              });
+
+              
+              const handleOnClick = ()=>{
+                  if(theme === "Change Theme to light!!")
+                  {
+                      setStyle({
+                          textAlign : "centre",
+                          paddingLeft : "9rem",
+                          paddingRight : "9rem",
+                          marginTop : "50px",
+                          backgroundColor : "white",
+                          border : "solid black"
+                      });
+                      setTheme("Change Theme to dark!!");
+                  }
+                  else
+                  {
+                      setStyle({
+                          textAlign : "centre",
+                          paddingLeft : "9rem",
+                          paddingRight : "9rem",
+                          marginTop : "50px",
+                          backgroundColor : "black",
+                          border : "solid white",
+                          color : "white"
+                      });
+                      setTheme("Change Theme to light!!");
+                  }
+              }
+
+
+              <div style={style1}> </div>
+
+
+
+16. We can copy a text to clipboard as:
+    eg:- 
+        const handleOnClickCopy = ()=>{
+            navigator.clipboard.writeText(text);
+        }
+
+      
+  
+17. To remove extra spaces from a sentence:
+    eg:-
+        const handleOnClickExtraSpace = ()=>{
+            let newText = text.split(/[ ]+/);
+            setText(newText.join(" "));
+        }
+
+
+
+18. Use toast (toastify) (npm website) to push notifications. (link: https://fkhadra.github.io/react-toastify/introduction/)
+    eg:- (npm i react-toastify) 
+    Step-1: import { ToastContainer, toast } from 'react-toastify';
+            import 'react-toastify/dist/ReactToastify.css';
+
+    Step-2: <Button text="Convert To Upper-Case" onClick={handleOnClickUp}></Button>
+
+    Step-3: just add the toast(alert/notification) container anywhere
+            <div>
+              <ToastContainer />
+            </div>
+
+    Step-4: const handleOnClickUp = ()=>{
+                toast("Converted to upper-case",{position: "top-center"})
+            }  
+
+
+
+19. To change title of document and favicon (tab), go in public/index.html and do changes.
+    - We can also change title as: 
+                document.title = "TextUtils - Dark mode";
+
+
+
+*****
+20. To install and use react-router-dom:
+    Step-1: $~ npm install react-router-dom
+
+    Step-2: - In main.jsx: 
+                import {createBrowserRouter, RouterProvider} from 'react-router-dom';     //1. import the necessary things
+          
+                const router = createBrowserRouter([                                      //2. create router using createBrowserRouter()            
+                    {
+                      path: "/",
+                      element: <App/>,
+                      errorElement: <ErrorPage />,
+                      children: [                                                         //3. Add children to redirect to the component on same web-page(without reloading)
+                        {
+                          path: "/login",
+                          element: <Login/>
+                        },
+                        {
+                          path: "/about",
+                          element : <About/>
+                        },
+                        {
+                          path: "/contact",
+                          element : <ContactUs/>
+                        }, 
+                        {
+                          path: "/textutils",
+                          element : <Textutils/>
+                        },      
+                        {
+                          path: "/user/:username",
+                          element : <User/>
+                        }
+                      ]
+                    },
+    
+                ])
+
+                  ReactDOM.createRoot(document.getElementById('root')).render(
+                    <React.StrictMode>
+                      <RouterProvider router={router} />                                  //4. 
+                    </React.StrictMode>,
+                  )
+
+              
+
+    Step-3: - Create src/routes and and move App.jsx and App.css to src/routes            //5. 
+
+
+
+    Step-4: - Write in App.jsx, the code which is going to remain same.                   //6.
+
+              In App.jsx:
+
+              import './App.css'
+              import Card from '../Components/Card.jsx'
+              import Footer from '../Components/Footer.jsx'
+              import Navbar from "../Components/Navbar.jsx";
+              import { Outlet } from 'react-router-dom';                                  //7. 
+
+              function App() {
+                return (
+                  <>
+                    <Navbar/>
+                    <div className='c1'>
+                      <Card heading = "Card 1" description="This is card 1."/>
+                      <Card heading = "Card 2" description="This is card 2."/>
+                      <Card heading = "Card 3" description="This is card 3."/>
+                      <Card heading = "Card 4" description="This is card 4."/>
+                    </div>
+                  
+                  
+                    <Outlet/>                                                            //8. Use outlet to change the content without loading(single page application)
+
+
+                    <Footer/>
+
+                  </>
+                )
+              }
+
+              export default App
+
+
+
+            - In Navbar.jsx:
+                import {Link} from 'react-router-dom';                                    //9. 
+
+                export default function Navbar() {
+                  return (
+                    <>
+                        <div className="container">
+                            <Link to="/home" className='c1'>Home</Link>                   //10. Use "Link" and "to"
+                            <Link to="/about" className='c1'>About</Link>
+                            <Link to="/contactus" className='c1'>Contact Us</Link>
+                        </div>
+                    </>
+                  )
+                }
+
+
+
+
+    *****
+    Note: -To highlight the link button when it is clicked/watched, we use NavLink (instead of Link):
+            eg:- 
+                import {NavLink} from 'react-router-dom';                                                                        //1. import navLink (instead of Link)
+
+                export default function Navbar() {
+                  return (
+                    <>
+                        <div className="container">
+                            <NavLink to="/home" className={(e) => {return e.isActive ? "red" : "c1"}}>Home</NavLink>             //2. use NavLink (at place of Link)
+                            <NavLink to="/about" className={(e) => {return e.isActive ? "red" : "c1"}}>About</NavLink>
+                            <NavLink to="/contact" className={(e) => {return e.isActive ? "red" : "c1"}}>Contact Us</NavLink>
+                        </div>
+                    </>
+                  )
+                }
+
+
+
+
+
+21. To use parameters which are passed in link (/user/vaibhav), we use useParams:
+    eg:-  import { useParams } from 'react-router-dom'                        //1. import useParams
+
+          export default function User() {
+    
+              const params = useParams();                                     //2. store them in a variable
+
+            return (
+              <div>
+                 I am {params.username}                                       //3. use them
+              </div>
+            )
+          }
+
+
+
+
+
+
+22. If we want to dynamically navigate (redirect) to a url when a button is clicked (like submit):
+    eg:- 
+        import { useNavigate } from "react-router-dom";                                        //1. 
+
+ 
+        const navigate = useNavigate();                                                        //2.
+
+
+        const handleOnClickClear = ()=>{
+            setText("");
+            toast("Text cleared",{position: "top-center"});
+            navigate("/");                                                                     //3.
+        }
+
+
+        <Button text="Clear Text" onClick={handleOnClickClear} ></Button>                      //4.
+
+
+
+*****
+23. To dynamically create and add a html element, we use map() function.
+    eg:-
+        export default function Todo() {
+
+          let [taskArr, setTask] = useState([ {task:"Buy Milk", date:"4/7/2024"}, ]);        //1. create the array (of elements or objects)
+
+          return (
+            <>
+                <div className='c1'>
+                    <h1>To-Do App</h1>
+                    <div>
+                        <input type="text" name="" id="id1"  className="c2" placeholder='Enter Todo here' />
+                        <input type="date" name="" id="id2"  className="c2" /> 
+                        <button type="submit" id='id3' className="c2" onClick={handleClickAdd}>Add</button>
+                    </div>
+
+                        {taskArr.map((item) => (                                             //2. use map()
+                            <div key={item}>
+                                <span className='c3' id='id1'>{item.task}</span>
+                                <span className='c3' id='id2'>{item.date}</span>
+                                <span className='c3' id='id4'>Delete</span>        
+                            </div>        
+                        ))}
+
+                </div>    
+            </>
+          )
+        }
+
+
+
+24. We can add a element conditionally (conditional rendering).
+    eg:-
+        export default function Todo() {
+
+          let [taskArr, setTask] = useState([ {task:"Buy Milk", date:"4/7/2024"}, ]);        
+
+          return (
+            <>
+                <div className='c1'>
+                    <h1>To-Do App</h1>
+                    <div>
+                        <input type="text" name="" id="id1"  className="c2" placeholder='Enter Todo here' />
+                        <input type="date" name="" id="id2"  className="c2" /> 
+                        <button type="submit" id='id3' className="c2" onClick={handleClickAdd}>Add</button>
+                    </div>
+
+
+                        {taskArr.length ===0 ? <h2>No items added</h2> : null }                      //1. If condition is true it will return only "true" block (and will not return further elements)
+
+                        {taskArr.map((item) => (                                            
+                            <div key={item}>
+                                <span className='c3' id='id1'>{item.task}</span>
+                                <span className='c3' id='id2'>{item.date}</span>
+                                <span className='c3' id='id4'>Delete</span>        
+                            </div>        
+                        ))}
+
+                </div>    
+            </>
+          )
+        }
+
+
+
+25. To avoid common css className and id, we use css modules;
+    eg:-
+
+      Step-1: Make Todo.module.css (instead of css) and write whole css inside it.
+
+      Step-2: To import the css file:
+              import style from "Todo.module.css";
+
+      Step-3: To use the css classes and id:
+              (i). className={styles=["todoItems"]}                                                
+
+              (ii). className={` ${styles["todoItems']} c2`}
+                                    |
+                                    --------------------------> (class defined in Todo.module.css)
+
+
+*****
+26. (i). To add an element in an array, use this:
+          eg:- 
+                                            -----------------> (adds new element)
+                                            |
+              setTaskArr([...taskArr, {task , date}]);
+                              |
+                              --------------------------------> (takes previous array, as-it-is)
+
+
+    (ii). To remove an element from an array, use this (filter):
+            eg:- 
+                                      -----------------------> (makes an array, by adding elements, based on the condition result (true or false))
+                                      |
+                setTaskArr(taskArr.filter(element => element !== item));
+                                                        |
+                                                        ----------> (checks the condition to select the element which is to be added in new array)
+              
+
+27. To control the behaviour of keyboard keys, we can use:
+    eg:- event.key
+
+
+
+Note: Open console and look event object (by printing it) and look which values we can use.
+
+
+*****
+28. If we are passing a prop to a component and want to pass the same prop to another component, then have to use the wrap it in a function:
+    eg:-
+        {taskArr.map((item) => (
+                    <div key={item}>
+                        <span className='c3' id='id1'>{item.task}</span>
+                        <span className='c3' id='id2'>{item.date}</span>
+                        <span className='c3' id='id4' onClick={(event) => handleClickDelete(item,event)}>Delete</span>          // like this        
+                    </div>        
+        ))}
+
+
+
+29. Always define "value" in a input tag.
+
+
+
+30. To install react-icon library:
+      npm install react-icons -save
+
+
+
+31. We can use preventDefault in form, to prevent the page from being refreshed when the submit button is clicked.
+    eg:-
+        const handleSubmit = () => {
+            event.preventDefault();
+        }
+
+        return(
+            <form onSubmit={handleSubmit}></form>
+        )
+
+
+
+
+32. - If we want to create a variable or dataset, which is to be passed to used by many components, then we can use context.
+    - We can create a variable or a dataset separately, which is to be shared to multiple components, using context API (createContext, useContext).
+    - Keep in mind that createContext() will create a static variable which cannot be changed, so if we want to change the dataset dynamically, then we have to create a useState variable in parent class (App.jsx) and pass it into the 'value' field in context.Provider. 
+    eg:- 
+
+      Step-1: Create a new jsx file as "./src/store/TodoItems.jsx".
+      (TodoItems.jsx):
+
+        import React, { createContext } from 'react'                             //1. import useContext from "react"
+
+        export const TaskArrContext = createContext([]);                          //2. create dataset which is to be shared or exported to multiple components (it is static) 
+
+
+
+      Step-2.: import it in the main file from where we want to share it to different components (usually App.jsx).
+      (App.jsx):
+
+        import './App.css'
+        import Card from '../Components/Card.jsx'
+        import Footer from '../Components/Footer.jsx'
+        import Navbar from "../Components/Navbar.jsx";
+        import { Outlet } from 'react-router-dom';
+        import { useContext, useState } from 'react';
+        import { TaskArrContext } from '../store/TodoItems.jsx';                 //3. Import it in parent file from where the dataset is to be shared to each component
+
+
+        function App() {
+
+          const [taskArrMain, setTaskArrMain] = useState( [] );                  //4. Create a variable using useState so to pass it as context value to context.Provider to make the context dynamic.
+  
+          return (
+            <>
+              <TaskArrContext.Provider value={ {taskArrMain, setTaskArrMain} }>  //5. Wrap the components in the <TaskArrContext.provider> so all the components inside it can access it.
+
+                <Navbar/>
+      
+                <Outlet/>
+
+                <Footer/>
+              </TaskArrContext.Provider>                                         //5. <TaskArrContext.provider>
+            </>
+          )
+        }
+
+        export default App
+
+
+      Step-3.: Now use the context using "useContext" in all the components you want to access the dataset.
+      eg:-
+
+      (a). Todo.jsx:
+        import React, { useContext } from 'react'                                //6. Import useContext
+        import { TaskArrContext } from './store/TodoItems.jsx';                  //7. Import the context
+
+        export default function Todo() {  
+
+          const importedTaskArrContext = useContext(TaskArrContext);             //8. Put it in a variable
+
+          const handleClickDelete = (item) => {
+              importedTaskArrContext.setTaskArrMain(importedTaskArrContext.taskArrMain.filter(element => element !== item));     //9.
+          }
+
+          const task = useRef();
+          const date = useRef();
+
+
+          const handleClickAdd = ()=>{
+
+              const ctask = task.current.value;
+              const cdate = date.current.value.split("-").reverse().join("-"); 
+              importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, {ctask,cdate}]);      //9. Use the context
+              task.current.value = "";
+              date.current.value = "";
+          }
+
+          return (
+            <>
+                <div className='c1'>
+                    <h1>To-Do App</h1>
+                    <div>
+                        <input type="text" name="" id="id1"  className="c2" ref={task} placeholder="Enter the todo here"/> 
+                        <input type="date" name="" id="id2"  className="c2" ref={date}/>   
+                        <button type="submit" id='id3' className="c2" onClick={handleClickAdd}>Add</button>  
+                    </div>
+            
+                        {importedTaskArrContext.taskArrMain.length ===0 ? <h2>No items added</h2> : null }
+
+                        {importedTaskArrContext.taskArrMain.map((item) => (                                       //9.
+                            <div key={`${item.ctask}-${item.cdate}`}>
+                                <span className='c3' id='id1'>{item.ctask}</span>
+                                <span className='c3' id='id2'>{item.cdate}</span>
+                               <span className='c3' id='id4' onClick={(event) => handleClickDelete(item,event)}>Delete</span>        
+                            </div>        
+                        ))}
+                </div>
+            </>
+          )
+        }
+
+
+      (b). Clock.jsx:
+
+          import React, { useContext } from 'react'                              //6. Import useContext
+          import { TaskArrContext } from '../store/TodoItems';                   //7. Import the context
+          import {useState} from "react"  
+
+          export default function Clock() {
+
+            const [time, setTime] = useState(new Date());
+
+            const importedTaskArrContext = useContext(TaskArrContext);           //8. Put it in a variable
+
+            const handleClickDelete = (item) => {
+              importedTaskArrContext.setTaskArrMain(importedTaskArrContext.taskArrMain.filter(element => element !== item));     //9.
+            }
+
+            return (
+              <>
+                <div className='c1'>          
+
+                This is the clock that shows the time in India:
+                <br />
+                Current date in India is: {time.toLocaleDateString('en-GB')}
+                <br />
+                Current time in India is: {time.toLocaleTimeString()}
+
+                </div>
+
+                {importedTaskArrContext.map((item) => (                                         //9. Use the context
+                            <div key={`${item.ctask}-${item.cdate}`}>
+                                <span className='c3' id='id1'>{item.ctask}</span>
+                                <span className='c3' id='id2'>{item.cdate}</span>
+                                <span className='c3' id='id4' onClick={(event) => handleClickDelete(item,event)}>Delete</span>       
+                            </div>        
+                        ))}
+              </>
+            )
+          }
+
+
+
+33. To handle the fetched data, we ca use fetch():
+    eg:-
+        const handleFetchClick = () => {
+        fetch('https://dummyjson.com/todos')                                              //1. fetches the data in form of promise
+            .then(res => res.json())                                                      //2. Then converts it to json
+            .then(data => importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, ...data.todos]))        //3. Then we can use the data (any variable name)
+            console.log(importedTaskArrContext.taskArrMain);
+        }
+
+
+
+34. - If we want to fetch the data only at the starting of the loading the page or only at when their is some some in the data, we can use useEffect().
+    - Syntax: useEffect(function to perform, when to perform);
+
+        Case-1: If we want to fetch data only at loading of the page.
+          eg:-  
+              useEffect(() => {
+                  fetch('https://dummyjson.com/todos')
+                  .then(res => res.json())
+                  .then(data => importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, ...data.todos]))
+                  // .then(data => console.log(data.todos[0]))
+                  console.log(importedTaskArrContext.taskArrMain);
+              }, []);
+                  |
+                  ----------------------->(ensures that data is fetched only when the page is loading)
+
+
+        Case-2: If we want to fetch the data only when their is change in the data.
+          eg:-
+              useEffect(() => {
+                  fetch('https://dummyjson.com/todos')
+                  .then(res => res.json())
+                  .then(data => importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, ...data.todos]))
+                  // .then(data => console.log(data.todos[0]))
+                  console.log(importedTaskArrContext.taskArrMain);
+              }, [data]);
+                    |
+                    ---------------------->(ensures that data is fetched only when their is some change in the data)
+
+
+
+
+35. To add a loading spinner, we can add it using a useState variable and useEffect.
+    eg:- 
+
+    export default function Todo() {
+
+        const [fetching, setFetching] = useState(true);                     //1. Declaring a variable to track the fetching.
+
+
+        useEffect(() => {
+            setFetching(true);                                              //2. setting the fetching variable true until the data is fetched
+            fetch('https://dummyjson.com/todos')
+            .then(res => res.json())
+            .then(data => {
+                importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, ...data.todos])
+                // .then(data => console.log(data.todos[0]))
+                console.log(importedTaskArrContext.taskArrMain);
+                setFetching(false);                                         //3. Once the data is fetched, we will set the fetching variable as false
+            })
+        }, []);
+
+
+        return (
+          <>
+              {fetching ===true ? <LoadingSpinner/> : importedTaskArrContext.taskArrMain.length ===0 ? <h2>No items added</h2> : null }   //4. handling the data based on the fetching variable
+
+           
+          </>
+        )
+    }
+
+
+
+36. - useEffect cleanup means to stop the data fetching or a setInterval when the use goes on another page.
+    - It can be done in the return block of useEffect as:
+
+    Case-1: If the web-page is fetching some data from the server, but suddenly (before loading) user goes on a next page, then we can stop the data fetching as:
+              eg:- 
+                  useEffect(() => {
+                      setFetching(true);
+        
+                      const controller = new AbortController();                               //1. declare the controller
+                      const signal = controller.signal;                                       //2. declare signal
+        
+                      fetch('https://dummyjson.com/todos')
+                      .then(res => res.json())
+                      .then(data => {
+                          importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, ...data.todos])
+                          setFetching(false);
+                      })
+
+                      return () => {                                                          //3. define a function in return  
+                          console.log("request aborted");
+                          controller.abort();                                                 //4. abort the controller
+                      }
+        
+                  }, []);
+
+
+    Case-2: If the webpage is continuously changing data due to a setInterval, we can stop it when the use goes on another page as:
+              eg:- 
+                  useEffect(() => {
+                      const intervalId = setInterval(() => {
+                          setTime(new Date());
+                      },1000)
+
+                      return () => {
+                        clearInterval(intervalId);
+                        console.log("Abort requested");
+                      }
+                  }, []);
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Backend:
+
+1.  $~ npm init
+    $~ npm i -g nodemon   
+    $~ 
+
+
+
+2.  index.js:
+      const http = require("http");
+      const server = http.createServer(() => {
+        console.log()
+      })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

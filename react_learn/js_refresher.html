@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js_refresher</title>
+</head>
+<body>
+    this is body.
+</body>
+
+<script> 
+    let a = 10;
+    console.log(a);
+
+    // datatypes :
+    // numbers, objects, booleans, string, undefined, null
+    
+
+    // functions:
+    function hello()
+    {
+        console.log("hello vaibhav");
+    }
+
+    hello();
+
+
+    //objects:
+    let obja = {
+        r : 34,
+        m: "bkk",
+        funci: function myfunc1(number) // if function is in an object, put it in a variable
+        {
+            console.log("the number is:" +obja.r+ number)   
+        }
+
+    }  
+
+    obja.funci(48);
+
+
+    // event listener:
+    document.addEventListener("click", function funci1(){
+        console.log("clicked");
+        // alert("clicked");
+        // prompt()
+        let conf = confirm("are you sure?"); //yes-> returns true, cancel-> false
+        console.log(conf);
+    })
+
+
+    // array:
+    let arr1 = [10,20,"vaibhav"];
+    console.log(arr1);
+
+    console.log(this);
+
+    // callbacks: called after a certain duration(miliseconds)
+    setTimeout(()=>{
+        console.log("after 3 seconds.")
+    },3000)
+
+    console.log("This will work at its time.");
+
+
+    // promises: called after a certain operation
+
+
+
+
+
+
+
+    // modules: (to share data betwen each other files)
+    //     - Suppose I have some data in my module1.mjs (use mjs not js) and I want to use it in module2.mjs, it can be done by "export" keyword.
+    //     eg:-
+    //         module1.mjs:
+    //              let a = "vaibhav";
+    //              let b = "mayur";
+    //              let c = "akshay";
+    //              let d = "krushna";
+                
+    //              export default a;   (to pass a data as default data)
+    //              export { b, c, d };  (to pass specific data)
+
+
+    //         module2.mjs:
+    //              import xyc from "./module1.mjs"; 
+    //              import {b,c,d} from "./module1.mjs";
+                 
+    //              console.log(xyz);
+    //              console.log(b);
+    //              console.log(c);
+    //              console.log(d);
+
+
+</script>
+</html>
