@@ -1,0 +1,58 @@
+.c1
+{
+    user-select: none;
+}
+
+.c2
+{
+    border: solid rgb(69, 69, 69) 2px;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    padding: 9px;
+    border-radius: 4px;
+}
+
+#id1
+{
+    width: 220px;
+}
+
+#id2
+{
+    width: 120px;
+}
+
+#id3
+{
+    width: 70px;
+    background-color: rgb(4, 166, 4);
+    color: white;
+    cursor: pointer;
+}
+
+.c3
+{
+    display: inline-block;
+    text-align: left;
+    margin-left: 3.25vw;
+    margin-right: 3.25vw;
+    padding: 9px;
+    border-radius: 4px;
+    margin-top: 10px;
+
+}
+
+#id4
+{
+    background-color: rgb(176, 12, 12);
+    color: white;
+    width: 50px;
+    display: inline-block;
+    border: solid rgb(69, 69, 69) 2px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: -10px;
+
+
+}
+

@@ -1,0 +1,37 @@
+#idcal
+{
+    text-align: center;
+    border: solid black 2px;
+    width: 100%;
+}
+
+#idcal2
+{
+    width: 240px;
+    height: 40px;
+}
+
+#idcal3
+{
+    height: 50px;
+    width: 50px;
+    font-size: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#idcal4
+{
+    text-align: center;
+    display: inline-block;
+    width: 220px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

@@ -1,0 +1,22 @@
+.container
+{
+    background-color: rgb(186, 172, 164);
+    padding: 20px;
+}
+
+.c1
+{
+    margin-left: 50px;
+    text-decoration: none;
+    color: black;
+    gap: 100px;
+}
+
+.red
+{
+    margin-left: 50px;
+    color: rgb(187, 83, 216);
+    gap: 100px;
+ 
+    
+}
