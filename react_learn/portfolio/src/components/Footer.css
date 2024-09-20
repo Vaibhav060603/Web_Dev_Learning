@@ -1,0 +1,106 @@
+
+#idhfoot0
+{
+    background-color: rgb(12, 21, 38);
+    color: white;
+    text-align: center;
+    display: inline-block;
+    bottom: 0px;
+}
+
+#idhfoot1
+{
+    font-size: 3rem;
+    height: 4rem;
+    margin-bottom: 0.001rem;
+}
+
+#idhfoot2
+{
+    font-size: 1.4rem;
+    color: rgb(219, 220, 221);
+}
+
+
+.cfoot1
+{
+    width: 15rem;
+    height: 1.2rem;
+    background-color: rgb(40, 40, 87);
+    border-radius: 6px;
+    color: white;
+    border: solid rgb(151, 150, 166) 1px;
+    padding: 7px;
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.cfoot1:focus
+{
+    color: black;
+    background-color: rgb(176, 176, 200);
+}
+
+
+#idhfoot4
+{
+    background-image: url(./public/contact_img.png);
+    background-repeat: no-repeat;
+    background-size: 8rem;
+    height: 7.2rem;
+    width: 8rem;
+    display: inline-block;
+}
+
+#idhfoot5
+{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+#idhfoot6
+{
+    height: auto;
+    max-width: 15rem;
+}
+
+#idhfoot7
+{
+    margin-top: 35px;
+    width: 6rem;
+    height: 2.5rem;
+    background-color: rgb(12, 21, 38);
+    color: white;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#idhfoot7:hover
+{
+    background-color: rgb(29, 29, 43);
+}
+
+#idhfoot8
+{
+    margin-top: 4rem;
+    padding: 3rem;
+    text-align: center;
+}
+
+.chfoot1
+{
+    text-decoration: none;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    cursor: pointer;
+}
+
+
+
+
+
+
+

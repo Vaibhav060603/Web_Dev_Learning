@@ -1,0 +1,187 @@
+@font-face {
+    font-family: "suse";
+    src: url(./public/SUSE/SUSE-VariableFont_wght.ttf);
+}
+
+body
+{
+    font-family: "suse";
+}
+
+.ch1
+{
+    width: 100%;
+    height: 100%;
+}
+
+.ch2
+{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.ch3
+{
+    text-align: right;
+    margin-top: 3.7rem;
+}
+
+.ch4
+{
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 5vw;
+    text-align: right;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+}
+
+#idh2
+{
+    font-size: 3.7rem;
+    margin-top: 14rem;
+}
+
+#idh3
+{
+    font-size: 1.9rem;
+    margin-top: -2rem;
+}
+
+
+#idh5
+{
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    bottom: 0;
+}
+
+.ch5
+{
+    background-color: white;
+}
+
+#idh6
+{
+    display: inline-block;
+    font-size: 2rem;
+    color: #646262;
+    font-weight: 550;
+}
+
+#idh7
+{
+    border: solid #a5d8ff;
+    width: 3vw;
+    display: inline-block;
+    position: absolute;
+    margin-top:3 -1.5rem;
+}
+
+#idh8
+{
+    
+}
+
+
+#idh9
+{
+    color: #666;
+
+} 
+
+#idh10
+{
+    /* border: solid black; */
+    width: 35rem;
+}
+
+.ch6
+{
+    display: inline-block;
+    margin-right: 50px;
+    color: white;
+    /* background-color: black; */
+    background-color: rgb(12, 21, 38);
+    padding: 4px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 5px;
+}
+
+
+#idh11
+{
+    background-image: url("./public/space_img_1.png");
+    size: 10rem;
+    width: 100%;
+    min-height: fit-content;
+    color: white;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+    align-items: center;
+}
+
+#idh12
+{
+    font-size: 3rem;
+    color: rgb(193, 192, 192);
+}
+
+#idh13
+{
+    display: inline-block;
+    width: 85vw;
+}
+
+#idh14
+{
+    background-image: url("./public/space_img_2.png");
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+    /* border: solid rgb(132, 132, 224); */
+}
+
+#idh15
+{
+    font-size: 3rem;
+    color: rgb(220, 217, 217);
+
+}
+
+#idh16
+{
+    /* border: solid green; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

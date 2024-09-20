@@ -1,0 +1,70 @@
+.csb2
+{
+    background-color: rgb(12, 21, 38);
+    padding: 1vw;
+    height: 8vw;
+    width: 8vw;
+    border-radius: 10px;
+    border: solid white 1px;
+    cursor: pointer;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    display: inline-block;
+    align-items: center;
+}
+
+.csb2:hover
+{
+    transform: scale(1.1);
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+
+#idsb1
+{
+    height: 5vw;
+    width: 4.5vw;
+    min-height: fit-content;
+}
+
+#idsb2
+{
+    align-items: center;
+    min-height: fit-content;
+}
+
+#idsb3
+{
+
+    display: block;
+    margin-top: 0.7vw;
+    font-size: 1.2vw;
+    max-width: 8vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

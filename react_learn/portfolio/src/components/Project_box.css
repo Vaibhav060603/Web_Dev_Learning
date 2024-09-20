@@ -1,0 +1,42 @@
+#idpb1
+{
+    color: white;
+    display: inline-block;
+    /* border: solid red; */
+    width: 100%;
+}
+
+#idpb2
+{
+    size: 50rem;
+    height: 25rem;
+    width: 42rem;
+    /* border: solid white 8px; */
+    cursor: pointer;
+    transition: transform 0.4s ease-in-out; /* This will apply the transition for both hover and removal */
+    transform: translateY(0); /* Default position */
+}
+
+#idpb2:hover
+{
+    transform: translateY(-17px); /* Moves the box upwards on hover */
+}
+
+#idpb3
+{
+    /* border: solid yellow; */
+    font-size: 1.2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
