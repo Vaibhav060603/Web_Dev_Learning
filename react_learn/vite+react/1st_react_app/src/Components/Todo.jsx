@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./Todo.css";
 import { MdOutlineDelete } from "react-icons/md";
-import { TaskArrContext } from 'C:/Users/Shree/Downloads/react_learn/vite+react/1st_react_app/src/store/TodoItems.jsx';
+import { TaskArrContext } from 'C:\\Users\\Shree\\Documents\\Web_Development\\learning\\web_dev_learnings\\react_learn\\vite+react\\1st_react_app\\src\\store\\TodoItems.jsx';
 import LoadingSpinner from './LoadingSpinner';
+import { useLoaderData } from 'react-router-dom';
 
 
 
@@ -56,40 +57,72 @@ export default function Todo() {
         const id = (importedTaskArrContext.taskArrMain[importedTaskArrContext.taskArrMain.length-1].id) +1; 
         const todo = task.current.value;
         const cdate = date.current.value.split("-").reverse().join("-"); 
-        console.log(task.current.value)
+        // console.log(task.current.value)
         // console.log(date.current.value)
+        
+        // To make changes locally
         importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, {id,todo,cdate}]);
+
         // setTaskArr([...taskArr, {ctask , cdate}]);
+        
+
+        // To send newly added data (Todo) to server        
+        fetch('https://dummyjson.com/todos/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                todo: todo,
+                completed: false,
+                userId: id,
+                cdate: cdate
+            })
+        })
+        .then(res => res.json()) 
+        .then(console.log);
+
+        
+        // To clear the local variables
         task.current.value = "";
         date.current.value = "";
-        <NavLink to="/about" className={(e) => {return e.isActive ? "red" : "c1"}}>About</NavLink>
-
+        
     }
-
-
+    
+    
     const [fetching, setFetching] = useState(true);
 
-    useEffect(() => {
-        setFetching(true);
-        
-        const controller = new AbortController();
-        const signal = controller.signal;
-        
-        fetch('https://dummyjson.com/todos')
-        .then(res => res.json())
-        .then(data => {
-            importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, ...data.todos])
-            // .then(data => console.log(data.todos[0]))
-            console.log(importedTaskArrContext.taskArrMain);
-            setFetching(false);
-        })
 
-        return () => {
-            console.log("request aborted");
-            controller.abort();
-        }
+    // method - 1 of fetching data from server (using "useEffect"), when a page is loaded.
+    // useEffect(() => {
+    //     setFetching(true);
         
-    }, ['https://dummyjson.com/todos']);
+    //     const controller = new AbortController();
+    //     const signal = controller.signal;
+        
+    //     fetch('https://dummyjson.com/todos')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         importedTaskArrContext.setTaskArrMain([...data.todos])
+    //         // .then(data => console.log(data.todos[0]))
+    //         // console.log(importedTaskArrContext.taskArrMain);
+    //         setFetching(false);
+    //     })
+
+    //     return () => {
+    //         console.log("request aborted");
+    //         controller.abort();
+    //     }
+        
+    // }, ['https://dummyjson.com/todos']);
+
+
+
+
+
+    //method - 2 of fetching data from server (using "useLoaderData")
+    importedTaskArrContext.setTaskArrMain(useLoaderData());
+
+
+    
     
 
   return (
@@ -104,7 +137,7 @@ export default function Todo() {
                 <button type="submit" id='id3' className="c2" onClick={handleClickAdd}>Add</button>    {/* onClick={handleClickAdd}*/}
             </div>
             
-                {fetching ===true ? <LoadingSpinner/> : importedTaskArrContext.taskArrMain.length ===0 ? <h2>No items added</h2> : null }
+                {/* {fetching ===true ? <LoadingSpinner/> : importedTaskArrContext.taskArrMain.length ===0 ? <h2>No items added</h2> : null } */}
 
                 
 
@@ -131,3 +164,4 @@ export default function Todo() {
     </>
   )
 }
+

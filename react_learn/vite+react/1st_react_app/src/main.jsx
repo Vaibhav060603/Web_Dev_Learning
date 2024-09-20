@@ -17,6 +17,9 @@ import { useState } from 'react';
 import Calculator from './Components/Calculator.jsx';
 import Card from './Components/Card.jsx';
 import News from './Components/News.jsx';
+import { todoLoader } from './store/fetchedToDoItems.jsx';
+import FormHandling, { addTodo } from './Components/FormHandling.jsx';
+import Redux_Counter from './Components/Redux_Counter.jsx';
 
 
 
@@ -52,7 +55,8 @@ const router = createBrowserRouter([
         },
         {
           path: "/todo",
-          element: <Todo/>
+          element: <Todo/>,
+          loader: todoLoader,
         },
         {
           path: "/clock",
@@ -65,6 +69,11 @@ const router = createBrowserRouter([
         {
           path: "/news",
           element: <News/>
+        },
+        {
+          path: "/form",
+          element: <FormHandling/>,
+          action: addTodo
         }
       ]
     },

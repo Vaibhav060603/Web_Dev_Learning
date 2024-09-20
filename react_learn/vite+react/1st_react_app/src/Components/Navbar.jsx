@@ -14,6 +14,7 @@ export default function Navbar() {
             <NavLink to="/clock" className={(e) => {return e.isActive ? "red" : "c1"}}>Clock</NavLink>
             <NavLink to="/calculator" className={(e) => {return e.isActive ? "red" : "c1"}}>Calculator</NavLink>
             <NavLink to="/news" className={(e) => {return e.isActive ? "red" : "c1"}}>News</NavLink>
+            <NavLink to="/form" className={(e) => {return e.isActive ? "red" : "c1"}}>Form</NavLink>
         </div>
     
     </>
