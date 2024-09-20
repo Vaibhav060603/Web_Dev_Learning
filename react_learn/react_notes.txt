@@ -19,7 +19,6 @@ React:
 
 
 
-
 - components, states, props:
 for example you have a form and you have to fill it :
 in an example of a form, the fields(name, age) are states, the data filled by a user is props, the empty form is components
@@ -538,7 +537,8 @@ Note: To import proptypes, we can just type "impt";
 
     Step-2: - In main.jsx: 
                 import {createBrowserRouter, RouterProvider} from 'react-router-dom';     //1. import the necessary things
-          
+                import ReactDOM from 'react-dom/client'
+
                 const router = createBrowserRouter([                                      //2. create router using createBrowserRouter()            
                     {
                       path: "/",
@@ -838,7 +838,10 @@ Note: Open console and look event object (by printing it) and look which values 
 
 
 
-32. - If we want to create a variable or dataset, which is to be passed to used by many components, then we can use context.
+32. - If we want to create a variable or dataset, which is to be passed to used by many components, then we can use context or redux.
+
+  (i). Context API: (use context API when the state is not going to change many times, else it will make the web-app slow)
+
     - We can create a variable or a dataset separately, which is to be shared to multiple components, using context API (createContext, useContext).
     - Keep in mind that createContext() will create a static variable which cannot be changed, so if we want to change the dataset dynamically, then we have to create a useState variable in parent class (App.jsx) and pass it into the 'value' field in context.Provider. 
     eg:- 
@@ -848,7 +851,7 @@ Note: Open console and look event object (by printing it) and look which values 
 
         import React, { createContext } from 'react'                             //1. import useContext from "react"
 
-        export const TaskArrContext = createContext([]);                          //2. create dataset which is to be shared or exported to multiple components (it is static) 
+                                  //2. create dataset which is to be shared or exported to multiple components (it is static) 
 
 
 
@@ -883,6 +886,7 @@ Note: Open console and look event object (by printing it) and look which values 
         }
 
         export default App
+
 
 
       Step-3.: Now use the context using "useContext" in all the components you want to access the dataset.
@@ -979,7 +983,14 @@ Note: Open console and look event object (by printing it) and look which values 
 
 
 
-33. To handle the fetched data, we ca use fetch():
+  (ii). Redux: (use Redux where the state is going to change many times)
+
+        (Redux is at last section)
+
+
+
+
+33. To handle the fetched data, we can use fetch():
     eg:-
         const handleFetchClick = () => {
         fetch('https://dummyjson.com/todos')                                              //1. fetches the data in form of promise
@@ -990,7 +1001,9 @@ Note: Open console and look event object (by printing it) and look which values 
 
 
 
-34. - If we want to fetch the data only at the starting of the loading the page or only at when their is some some in the data, we can use useEffect().
+
+34.(a). method - 1 of fethcing data from server (using "useEffect"), when a page is loaded.
+    - If we want to fetch the data only at the starting of the loading the page or only at when their is some change in the data, we can use useEffect().
     - Syntax: useEffect(function to perform, when to perform);
 
         Case-1: If we want to fetch data only at loading of the page.
@@ -998,7 +1011,7 @@ Note: Open console and look event object (by printing it) and look which values 
               useEffect(() => {
                   fetch('https://dummyjson.com/todos')
                   .then(res => res.json())
-                  .then(data => importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, ...data.todos]))
+                  .then(data => importedTaskArrContext.setTaskArrMain([...data.todos]))
                   // .then(data => console.log(data.todos[0]))
                   console.log(importedTaskArrContext.taskArrMain);
               }, []);
@@ -1011,12 +1024,55 @@ Note: Open console and look event object (by printing it) and look which values 
               useEffect(() => {
                   fetch('https://dummyjson.com/todos')
                   .then(res => res.json())
-                  .then(data => importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, ...data.todos]))
+                  .then(data => importedTaskArrContext.setTaskArrMain([...data.todos]))
                   // .then(data => console.log(data.todos[0]))
                   console.log(importedTaskArrContext.taskArrMain);
               }, [data]);
                     |
                     ---------------------->(ensures that data is fetched only when their is some change in the data)
+
+
+
+//preferable
+35.(b). method - 2 of fethcing data from server (using react-router's "Loader"), when a page is loaded.
+    eg: 
+
+      -In a new file (fetchedToDoItems.jsx), write a function which you want to be performed when a page is loaded.                                               //1.
+          
+          export const todoLoader = () => {
+    
+              return fetch('https://dummyjson.com/todos')
+                  .then(res => res.json())
+                  .then(data => {
+                      // console.log(data)
+                      return data
+         
+                  })
+          }
+
+
+      -In main.jsx, use loader, on the page where you want to perform some function (fetching) some data when before loading.                                       //2.
+
+          const router = createBrowserRouter([
+                {
+                  path: "/",
+                  element: <App/>,
+                  children: [
+                    {
+                      path: "/todo",
+                      element: <Todo/>,
+                      loader: todoLoader                                                       //
+                    },
+
+                  ]
+                }
+          ])
+
+
+      -In the file, where you want to add the data (that is fetched from server before loading the page) (Todo.jsx), use "useLoaderData" hook (by react-router).    //3.
+
+          importedTaskArrContext.setTaskArrMain(useLoaderData());
+      
 
 
 
@@ -1053,7 +1109,7 @@ Note: Open console and look event object (by printing it) and look which values 
 
 
 
-36. - useEffect cleanup means to stop the data fetching or a setInterval when the use goes on another page.
+36. - useEffect cleanup means to stop the data fetching or a setInterval when the user goes on another page.
     - It can be done in the return block of useEffect as:
 
     Case-1: If the web-page is fetching some data from the server, but suddenly (before loading) user goes on a next page, then we can stop the data fetching as:
@@ -1067,7 +1123,7 @@ Note: Open console and look event object (by printing it) and look which values 
                       fetch('https://dummyjson.com/todos')
                       .then(res => res.json())
                       .then(data => {
-                          importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, ...data.todos])
+                          importedTaskArrContext.setTaskArrMain([...data.todos])
                           setFetching(false);
                       })
 
@@ -1092,6 +1148,516 @@ Note: Open console and look event object (by printing it) and look which values 
                       }
                   }, []);
       
+
+
+37. To send a JSON object to server, which consists all the data (todo, post, form_data).
+      eg:
+          const handleClickAdd = ()=>{
+
+              const id = (importedTaskArrContext.taskArrMain[importedTaskArrContext.taskArrMain.length-1].id) +1; 
+              const todo = task.current.value;
+              const cdate = date.current.value.split("-").reverse().join("-"); 
+        
+              // To make changes locally
+              importedTaskArrContext.setTaskArrMain([...importedTaskArrContext.taskArrMain, {id,todo,cdate}]);
+
+
+              // To send newly added data (Todo) to server                                                  //1.
+              fetch('https://dummyjson.com/todos/add', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      todo: todo,
+                      completed: false,
+                      userId: id,
+                      cdate: cdate
+                  })
+              })
+              .then(res => res.json())
+              .then(console.log);
+
+        
+              // To clear the local variables                                                               //2.
+              task.current.value = "";
+              date.current.value = "";
+          }
+
+
+
+
+38. In react, we can do form handling using "<Form> </Form>" by react-router-dom.
+    -It gives a JSON object, which we can directly send to the server. 
+
+      eg:
+        (In file where formhanlding is being performed)
+        
+        - use the <Form></Form> tag provided by reacter-router-dom, with a method="Post".                           //1
+
+            <Form method="POST">                                                                      
+                <input type="number" name="userId" id="" /> <br />
+                <input type="text" name="name" id="" /> <br />
+                <input type="date" name="date" id="" /> <br />
+                <input type="number" name="mobile" id="" /> <br />
+
+            
+                <input type="submit" value="Submit"/>
+            </Form>
+
+
+        - Then, collect the data as follow.  
+
+            export const addTodo = async (data) => {                                                                //2.
+              const formData = await data.request.formData();                                                       //3.
+              const postData = Object.fromEntries(formData);                                                        //4.
+
+              fetch('https://dummyjson.com/todos/add', {                                                            //5. (If you want to send data to server, than only do this)  
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(postData)
+                    })
+                    .then(res => res.json()) 
+                    .then(console.log);
+
+              console.log(postData);
+              return redirect("/todo");                                                                             //6. then return something (or we can redirect)               
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Redux:
+
+
+  - Redux: (use Redux where the state is going to change many times)
+
+1. General things to use redux:
+
+  (./react_learn/vite+react folder/2nd_Redux_Counter)
+
+      Step-1: To install redux:                                                                            
+          $~ npm i @reduxjs/toolkit  
+          $~ npm i react-redux                                                                             //1.
+
+
+      Step-2: Create "store" folder with "ReduxStore.js" or "any_other_name.js" inside it.                        //2.
+
+          (ReduxStore.js):                                                                                        //3. 
+            import { configureStore } from '@reduxjs/toolkit'
+            import counterReducer from "./counter/counterSlice.js"             // counterReducer = counterSlice.reducer
+
+            export const ReduxStore = configureStore({
+              reducer: {
+                counter: counterReducer,
+              },
+            })
+
+
+      Step-3: (In "main.jsx"): To provide the store to all components
+
+            import {ReduxStore} from "./store/ReduxStore.js"                                                       //4.
+            import {Provider} from "react-redux";                                                                  //5.
+
+            createRoot(document.getElementById('root')).render(
+                <StrictMode>
+                  <Provider store={ReduxStore}>                                                                    //6.
+                    <App />
+                  </Provider>
+                </StrictMode>,
+            )
+
+
+Note: Step-1,2,3 are common for all, no need to repeat for each slice/feature.
+
+
+      Step-4: (In "store/counter/counterSlice.js"): To define and export, initial_states, functions (to change values)    //7. 
+
+          - slice are part of store, which are according to feature, like one slice for authentication, one for cart, one for profile, one for payment, etc., so that all the data is not leaked to every component.
+
+
+          (counterSlice.js):
+              import { createSlice } from '@reduxjs/toolkit'                                             //7.a. importing createSlice function
+
+              export const counterSlice = createSlice({                                                  //7.b. creating a slice, using createSlice       
+                name: 'counter',
+                initialState: {                                                                          //7.b.i. different initial states
+                    value: 0
+                  },
+                reducers: {                                                                              //7.b.ii. reducers/fuctions that can be performed on states
+                  increment: (state) => {
+                    state.value += 1
+                  },
+                  decrement: (state) => {
+                    state.value -= 1
+                  },
+                  incrementByAmount: (state, action) => {
+                    state.value += action.payload
+                  },
+                  //Write your own/new/required functions here.                                          //7.b.iii.                                               
+                },
+              })
+
+
+              // Action creators are generated for each case reducer function
+              export const { increment, decrement, incrementByAmount, multiply } = counterSlice.actions            //7.c.export the functions
+
+
+              export default counterSlice.reducer   
+
+
+
+      Step-5: To read the value from store, use "useSelector".                                                     //8.
+
+          (DisplayCounter.jsx): 
+
+            import React from 'react'
+            import {useSelector, useDispatch} from "react-redux";                                                  //8.a.
+
+
+            export default function DisplayCounter() {
+              const count = useSelector((state) => state.counter.value)                                            //8.b.
+
+Note: # use state.counter.value to read the value (variable) inside initialState. 
+    : # use state.counter to read the array present inside intitialState.
+                  
+              return (
+                <>
+                        <p>Counter current value: {count}</p>                                                      //8.c.
+                </>
+              )
+            }
+
+
+        Step-6: To change the value of variable present in store, use "useDispatch".                               //9.
+
+            (Controls.jsx):
+              import React, { useState } from 'react'
+              import "./Controls.css" 
+              import {useSelector, useDispatch} from "react-redux";                                                //9.a.
+              import {increment, decrement, incrementByAmount, reset} from "../store/counter/counterSlice"         //9.b.
+
+              export default function Controls() {
+
+                  const dispatch = useDispatch();                                                                  //9.c.
+
+                  const handleIncrement = () => {                                                                  //9.d.
+                      dispatch(increment());
+                  }
+    
+                  const handleDecrement = () => {
+                      dispatch(decrement());
+                  }
+
+                  const [toBeAdded, setToBeAdded] = useState(0);
+                  
+                  const handleToBeAddedChange = (event) => {
+                          setToBeAdded(event.target.value)
+                  }
+    
+                  const handleAdd = () => {
+                      dispatch(incrementByAmount(toBeAdded));
+                  }
+
+
+                  const handleReset = () => {
+                      dispatch(reset())
+                  }
+    
+    
+                return (
+                  <>
+                      <div id='idc1'>
+                          <button type="button" className='cc1' onClick={handleIncrement}>+1</button>              //9.e.
+                          <button type="button" className='cc1' onClick={handleDecrement}>-1</button>
+                          <input type="number" name="" className='cc1' value={toBeAdded} placeholder='Enter the value to be added to counter' onChange={handleToBeAddedChange}/>
+                          <button type="button" onClick={handleAdd}>Add</button> <br /> <br />
+                          <button type="button" onClick={handleReset}>Reset</button>
+
+                      </div>
+    
+                  </>
+                )
+              }
+
+
+
+2. If we want to add a loading spinner, using redux slices:
+
+    (eCommerce/src/store/slices/ItemSlice.js):
+
+    Step-1: create variable isLoading and isError in slices.
+
+        eg:
+          import { createSlice} from '@reduxjs/toolkit'
+
+          export const itemSlice = createSlice({
+            name: 'items',
+
+            initialState: {
+              isLoading: false,                                                                                                 //1.
+              isError: false,                                                                                                   //2.
+              data: []
+            },
+
+            reducers: {},
+          })
+
+          export const { } = itemSlice.actions
+
+          export default itemSlice.reducer 
+
+
+    Step-2: use the variables isLoading and isError to perform conditional rendering.
+
+        eg:
+            import './App.css'
+            import Header from './components/Header';
+            import Footer from './components/Footer';
+            import { Outlet } from 'react-router-dom';
+            import { useSelector } from 'react-redux';
+            import { RotatingLines } from 'react-loader-spinner'
+
+            function App() {
+
+                const {isLoading, isError} = useSelector((state) => state.items);                                                //3.
+    
+                return (
+                    <>
+                        <Header />
+
+                        <div id='idapp1'>
+                            <center>
+                                {isLoading === false && isError === true ? <h1>An error occurred.</h1>: null}                    //4.
+                                {isLoading ? <h1 id="idapp2"><RotatingLines color="blue" /></h1> : <Outlet/>}                    //5.
+                            </center>
+                        </div>
+
+                        <Footer />
+
+                    </>
+                )
+            }
+
+            export default App
+
+
+
+3. If we want to fetch data in redux, we use createAsyncThunk.
+
+    eg:
+
+      Step-1: (ItemSlice.js): fetch the items here
+
+          import { createSlice , createAsyncThunk} from '@reduxjs/toolkit'
+
+          export const fetchItems = createAsyncThunk("fetchItems", async (category) => {                      //1.
+            const response = await fetch(`http://localhost:8080/${category}`);                                **//1a. fetching data according to the link clicked 
+            const data = await response.json();
+            return data.items[0];                                                                             //1.b. return data by checking the API fetch result
+          })
+
+
+          export const itemSlice = createSlice({
+            name: 'items',
+
+            initialState: {                                                                                   //2.
+              isLoading: false,                                                                               //2.a.
+              isError: false,                                                                                 //2.b.
+              data: []                                                                                        //2.c.
+            },
+
+            reducers: {                                                                                       //3. 
+              clearItems: (state) => {
+                state.data = [];
+              }
+            },
+
+            extraReducers: (builder) => {                                                                     //4. 
+              builder.addCase(fetchItems.pending, (state,action) => {                                         //4.a. request is pending
+                state.isLoading = true;
+                state.isError = false;
+              }),
+
+              builder.addCase(fetchItems.fulfilled, (state,action) => {                                       //4.b. request is fulfilled
+                state.isLoading = false;
+                state.data = action.payload;
+
+              }),
+
+              builder.addCase(fetchItems.rejected, (state, action) => {                                       //4.c. request is rejected
+                console.log("Error", action.payload);
+                state.isError = true;
+                state.isLoading = false;
+              })
+            }
+          })
+
+          export const {clearItems } = itemSlice.actions                                                      //5.
+
+          export default itemSlice.reducer
+
+
+
+
+      Step-2: (CategorySlice.js): to track that which page/category (mens, womens, kids) is clicked, so that we can fetch data from API according to that.
+
+          import { createSlice } from '@reduxjs/toolkit'
+
+          export const CategorySlice = createSlice({                                                          //6.
+            name: 'currentCategory',
+
+            initialState: {
+              category: "items"
+            },
+
+            reducers: {
+              changeCategory: (state, action) => {
+                  state.category = action.payload;
+              },
+            },
+          })
+
+          export const { changeCategory } = CategorySlice.actions
+
+          export default CategorySlice.reducer
+
+          
+
+
+
+      Step-3: (Header.jsx): channge the category variable, whenever a button/link is clicked, so to repaint the UI accordinglt.
+
+                                                                                                     //7. perform essential imports
+          import React from 'react';
+          import "./Header.css"
+          import {Link, NavLink} from 'react-router-dom';
+          import { useDispatch} from "react-redux";
+          import {changeCategory} from "../store/slices/CategorySlice";
+          import {clearItems} from "../store/slices/ItemSlice"
+
+          export default function Header() {
+
+              const dispatch = useDispatch();                                                        //8. 
+      
+              const handleClickItem = () => {                                                        //9.
+                  dispatch(clearItems());                                                            //9.a. clear the previous items so that UI repaints (satisfy data.length === 0 present in HomeItems.jsx)
+
+                  dispatch(changeCategory("items"));                                                 //9.b. changing the category 
+              }
+
+              const handleClickMen = () => {
+                  dispatch(clearItems());
+                  dispatch(changeCategory("mens"));
+              }
+
+              const handleClickWomen = () => {
+                  dispatch(clearItems());
+                  dispatch(changeCategory("womens"));
+              }
+    
+              return (
+                  <>
+                      <header>
+                          <div className="logo_container">
+                              <Link to="/shop/items" onClick={handleClickItem}><img className="myntra_home" src="/my_fashion_store_logo.svg" alt="Myntra Home" /></Link>    //10.  
+                          </div>
+                          <div className="nav_bar">
+                              <NavLink to="/shop/mens" className={(e) => {return e.isActive ? "red" : "c1"}} onClick={handleClickMen}>Men</NavLink>                    //10.
+                              <NavLink to="/shop/womens" className={(e) => {return e.isActive ? "red" : "c1"}} onClick={handleClickWomen}>Women</NavLink>
+                          </div>
+                      </header>
+                  </>
+              )
+          }
+
+
+
+
+
+      Step-4: (HomeItems.jsx): use the fetched items.
+
+          import "./HomeItems.css"
+          import { useSelector, useDispatch } from "react-redux";
+          import React, { useState,useEffect } from 'react';
+          import { fetchItems } from '../store/slices/ItemSlice';
+
+
+          export default function HomeItems() {
+
+              const dispatch = useDispatch();                                                                //11.
+              const { data, isLoading, isError } = useSelector((state) => state.items);                      //12.
+              const category = useSelector((state) => state.currentCategory.category)                        //13. (to track that which page is to be shown)
+
+
+              useEffect(() => {                                                                              //14.
+                  console.log("Selected category:", category);
+                  if (isLoading === false && isError === false && data.length === 0) {
+                      dispatch(fetchItems(category));
+                  }
+              }, [isLoading, isError, data, dispatch, category]);
+
+
+              const [products, setProducts] = useState([]);                                                  //15.
+
+
+              useEffect(() => {                                                                              //16.
+                  if (isLoading === false && isError === false && data.length > 0) {
+                    setProducts(data);
+                  }
+                }, [data, isLoading, isError]);
+
+
+              return (
+                  <>
+                      <div id='main_content'>
+                          <center>
+                              {products.map((item) => (
+                                  <div className="item-container" key={item.id}>
+                                      <img className="item-image" src={item.image} alt="item image" />
+                                      <div className="rating">
+                                          {item.rating.stars} ⭐ | {item.rating.count}
+                                      </div>
+                                      <div className="company-name">{item.company}</div>
+                                      <div className="item-name">{item.item_name}</div>
+                                      <div className="price">
+                                          <span className="current-price">Rs {item.current_price}</span>
+                                          <span className="original-price">Rs {item.original_price}</span>
+                                          <span className="discount">({item.discount_percentage}% OFF)</span>
+                                      </div>
+                                      <button className="btn-add-bag" onClick={() => console.log("add to bag button")}>Add to Bag</button>
+                                  </div>
+                              ))}
+                          </center>
+                      </div>
+                  </>
+              )
+          }
+
+
+
+      
+
+
+
 
 
 
